@@ -73,20 +73,24 @@ def atualizar_funcionario(id_atualizar, funcionarios):
 def listar_funcionarios(funcionarios):
     """Exibe uma lista final de nomes e cargos cadrastados"""
     print('\nFuncionários Cadastrados:')
-    print(f'{'ID':<5} {'Nome':<20} {'Cargo':<20}')
+    print(f"{'ID':<5} {'Nome':<20} {'Cargo':<20}")
     for funcionario in funcionarios:
-        print(f'{funcionario['id']:<5} {funcionario['nome']:<20} {funcionario['cargo']:<20}')
+        print(f"{funcionario['id']:<5} {funcionario['nome']:<20} {funcionario['cargo']:<20}")
 
 def cadastrar_funcionario(ids, funcionarios):
     """Realiza o cadastro de funcionários - Precisa inserir (ids, lista dos funcionarios)"""
     # Pergunta quantos usuários deseja cadastrar
-    quantidade = int(input("\nQuantos funcionários deseja cadastrar? "))
+    while True:
+        try:
+            quantidade = int(input("\nQuantos funcionários deseja cadastrar? "))
+            break
+        except ValueError:
+            print("Digite um número válido.")
 
+
+    novos_funcionarios = []
     # Loop para coletar os nomes dos funcionários e o respectivo cargo
     for i in range(quantidade):
-
-        if i == 0:
-            novos_funcionarios = []
 
         print(f'\nFuncionário nº{i + ids}')
         nome = validar_nome()
